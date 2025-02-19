@@ -3,11 +3,16 @@
 
 #include "Critter.h"
 #include <vector>
+#include <memory>  // ✅ Needed for std::unique_ptr
 
+/**
+ * @class CritterWave
+ * @brief Manages waves of critters in the game.
+ */
 class CritterWave {
 private:
-    std::vector<Critter> critters;
-    int waveLevel;
+    std::vector<std::unique_ptr<Critter>> critters; /**< List of critters in the wave */
+    int waveLevel; /**< Difficulty level of the wave */
 
 public:
     CritterWave(int level, int entryX, int entryY);

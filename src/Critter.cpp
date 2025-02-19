@@ -1,4 +1,4 @@
-#include "Critter.h"
+#include "../include/Critter.h"
 #include <cmath>  // For movement calculations
 
 Critter::Critter(int lvl, int startX, int startY) 
