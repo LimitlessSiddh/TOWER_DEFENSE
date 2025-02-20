@@ -1,11 +1,11 @@
 #include "Map.h"
-#include "Tower.h"  // ✅ Now included in the .cpp file
+#include "Tower.h"
 
 Map::Map(int w, int h) : width(w), height(h), grid(h, std::vector<char>(w, 'S')), towers(h, std::vector<std::shared_ptr<Tower>>(w, nullptr)) {}
 
 void Map::setCell(int x, int y, char type) {
     grid[y][x] = type;
-    notifyObservers();
+    notifyObservers();  // ✅ Notify observers when the map changes
 }
 
 void Map::setEntryPoint(int x, int y) {
@@ -21,7 +21,7 @@ void Map::setExitPoint(int x, int y) {
 bool Map::placeTower(int x, int y, std::shared_ptr<Tower> tower) {
     if (grid[y][x] == 'S' && towers[y][x] == nullptr) {
         towers[y][x] = tower;
-        notifyObservers();
+        notifyObservers();  // ✅ Notify observers when a tower is placed
         return true;
     }
     return false;
@@ -49,3 +49,4 @@ void Map::display() const {
         std::cout << std::endl;
     }
 }
+
